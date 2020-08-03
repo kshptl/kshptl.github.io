@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+# Kush Patel's Data Science Portfolio
+This portfolio is a compilation of notebooks which I created for data analysis or for exploration of machine learning algorithms. A separate category is for separate projects.
 
-You can use the [editor on GitHub](https://github.com/kshptl/kshptl.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Stand-alone Projects
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Covid-19 Quarantine Emissions Impact Model
+Created a chart to vizualize the impact on emissions from reduced mobility due to Covid-19 quarantine in the USA.
 
-### Markdown
+### Patient Selection for Diabetes Drug Testing using EHR Data
+Built a machine learning model to identify diabetes patients that are likely to be treated with a novel diabetes drug, thereby ensuring effective reach out of the medical representatives to the corresponding physicians.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kshptl/kshptl.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Sentiment Analysis of Patient Review of Drugs
+Performed NLP Sentiment Analysis using a Random Forest Classifier and AWD-LSTM Deep Learning model to predict the sentiment of online drug reviews to positive, negative, or neutral.
