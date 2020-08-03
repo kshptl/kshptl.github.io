@@ -1,10 +1,9 @@
-# Kush Patel
-This portfolio is a compilation of notebooks which I created for data analysis or for exploration of machine learning algorithms. A separate category is for separate projects.
+I am a data scientist with a background in the pharmaceutical industry. This portfolio is a compilation of notebooks which I created for data analysis or for exploration of machine learning algorithms.
 
 ## **Projects**
 
 ### Covid-19 Quarantine Emissions Impact Model
-Created a chart to vizualize the impact on emissions from reduced mobility due to Covid-19 quarantine in the USA. Code can be found here.
+Created a chart to vizualize the impact on emissions from reduced mobility due to Covid-19 quarantine in the USA. Code can be found [here](https://github.com/kshptl/covid-19-emissions).
 
 ### Patient Selection for Diabetes Drug Testing using EHR Data
 Built a machine learning model to identify diabetes patients that are likely to be treated with a novel diabetes drug, thereby ensuring effective reach out of the medical representatives to the corresponding physicians. Code can be found [here](https://github.com/kshptl/Patient-Selection-for-Diabetes-Drug-Testing-using-EHR-Data)
