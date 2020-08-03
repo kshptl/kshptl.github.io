@@ -16,7 +16,7 @@ Performed NLP Sentiment Analysis using a Random Forest Classifier and AWD-LSTM D
 In this project, data from the NIH Chest X-ray Dataset was analyzed and trained with a Convolutional Neural Network (CNN) to classify a given chest x-ray for the presence or absence of pneumonia. This project culminates in a model that can predict the presence of pneumonia with human radiologist-level accuracy. Code can be found [here](https://github.com/kshptl/Pneumonia-Detection)
 
 ### Plagarism Checker
-Plagarism Checker using MinHash and Jaccard Similarity in finding similar items. Code can be found [here](Plagarism Checker using MinHash and Jaccard Similarity in finding similar items)
+Plagarism Checker using MinHash and Jaccard Similarity in finding similar items. Code can be found [here](https://github.com/kshptl/Plagarism-Checker-Algorithm)
 
 ### Network and Communities Clustering
 This project showcases algorithms for network community analysis and clustering. Specifically, the Girvan-Newman community detection algorithm and the k-mediods algorithm. Code can be found [here](https://github.com/kshptl/Network-Communities-and-Clustering)
