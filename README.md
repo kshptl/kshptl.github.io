@@ -1,4 +1,4 @@
-I am a data scientist with a background in the pharmaceutical industry. This portfolio is a compilation of notebooks which I created for data analysis or for exploration of machine learning algorithms.
+I am a data scientist with a background in the bio/pharmaceutical industry. This portfolio is a compilation of notebooks which I created for data analysis or for exploration of machine learning algorithms.
 
 ## **Projects**
 
