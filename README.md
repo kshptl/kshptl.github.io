@@ -3,7 +3,7 @@ I am a data scientist with a background in the bio/pharmaceutical industry. This
 ## **Projects**
 
 ### [Patient Selection for Diabetes Drug Testing using EHR Data](https://github.com/kshptl/Patient-Selection-for-Diabetes-Drug-Testing-using-EHR-Data)
-Built a machine learning model to identify diabetes patients that are likely to be treated with a novel diabetes drug, thereby ensuring effective reach out of the medical representatives to the corresponding physicians. Code can be found [here](https://github.com/kshptl/Patient-Selection-for-Diabetes-Drug-Testing-using-EHR-Data)
+Built a machine learning model to identify diabetes patients that are likely to be treated with a novel diabetes drug, thereby ensuring effective reach out of the medical representatives to the corresponding physicians.
 
 ### [Sentiment Analysis of Patient Review of Drugs](https://github.com/kshptl/Drug-Review-Sentiment-Analysis)
 Performed NLP Sentiment Analysis using a Random Forest Classifier and AWD-LSTM Deep Learning model to predict the sentiment of online drug reviews to positive, negative, or neutral.
