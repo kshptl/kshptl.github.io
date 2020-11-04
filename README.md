@@ -2,7 +2,7 @@ I am a data scientist with a background in the bio/pharmaceutical industry. This
 
 ## **Projects**
 
-### Covid-19 Quarantine Emissions Impact Model
+### [Covid-19 Quarantine Emissions Impact Model](https://github.com/kshptl/covid-19-emissions)
 Created a chart to vizualize the impact on emissions from reduced mobility due to Covid-19 quarantine in the USA. Code can be found [here](https://github.com/kshptl/covid-19-emissions).
 
 ### Patient Selection for Diabetes Drug Testing using EHR Data
