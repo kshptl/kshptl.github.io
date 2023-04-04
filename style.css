@@ -20,12 +20,6 @@ h2 {
 	background-color: #fff;
 }
 
-.navbar-brand {
-	font-size: 28px;
-	font-weight: 700;
-	color: #333;
-}
-
 .nav-link {
 	font-size: 20px;
 	font-weight: 500;
@@ -87,35 +81,33 @@ section {
 }
 
 /* New CSS rules for animations */
-@keyframes fade-in-move-up {
+@keyframes fade-in-and-move {
     0% {
         opacity: 0;
         transform: translateY(30%);
     }
-    100% {
+    50% {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
     100% {
         opacity: 1;
+        position: relative;
+        transform: translateY(0) translateX(-50%) scale(0.5);
+        top: 10px;
+        left: 50%;
     }
 }
 
 .profile-wrapper {
-    /* Center the profile in the middle of the page */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    animation: fade-in-move-up 1s forwards;
+    animation: fade-in-and-move 2s forwards;
     animation-delay: 0.5s;
+    text-align: center;
 }
 
 .profile-wrapper .profile-pic {
@@ -124,7 +116,13 @@ section {
 }
 
 .profile-wrapper .profile-name {
-    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+}
+
+.profile-wrapper .profile-description {
+    color: #666;
 }
 
 .hidden {
@@ -133,7 +131,7 @@ section {
 
 #projects {
     animation: fade-in 1s forwards;
-    animation-delay: 1.5s;
+    animation-delay: 2s;
 }
 
 @media (max-width: 768px) {
