@@ -2,24 +2,34 @@ body {
 	font-family: "Helvetica Neue", sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
+	color: #333;
+	background-color: #f5f5f5;
 }
 
 h2 {
 	font-size: 36px;
+	font-weight: 700;
 	margin-top: 80px;
 	margin-bottom: 40px;
+	color: #333;
+	text-align: center;
 }
 
 .navbar {
 	margin-bottom: 30px;
+	background-color: #fff;
 }
 
 .navbar-brand {
 	font-size: 28px;
+	font-weight: 700;
+	color: #333;
 }
 
 .nav-link {
 	font-size: 20px;
+	font-weight: 500;
+	color: #333;
 }
 
 section {
@@ -31,10 +41,56 @@ section {
 	margin: 0 auto;
 }
 
+.project {
+	margin-bottom: 50px;
+}
+
+.project h3 {
+	font-size: 28px;
+	font-weight: 700;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.project p {
+	font-size: 18px;
+	line-height: 1.6;
+	color: #666;
+}
+
+.project a {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.project a:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
+.contact p {
+	font-size: 18px;
+	line-height: 1.6;
+	color: #666;
+}
+
+.contact a {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.contact a:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 	h2 {
 		font-size: 28px;
 		margin-top: 60px;
 		margin-bottom: 30px;
+		text-align: center;
 	}
 }
