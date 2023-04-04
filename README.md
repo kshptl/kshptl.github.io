@@ -1,4 +1,4 @@
-I am a scientist with a background in the pharmaceutical industry. This portfolio is a compilation of respositories for analysis or for exploration of machine learning algorithms.
+I am a data scientist with a background in the pharmaceutical industry. This portfolio is a compilation of respositories for analysis or for exploration of machine learning algorithms.
 
 ## **Projects**
 
