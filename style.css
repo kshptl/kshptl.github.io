@@ -86,6 +86,56 @@ section {
 	text-decoration: underline;
 }
 
+/* New CSS rules for animations */
+@keyframes fade-in-move-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.profile-wrapper {
+    /* Center the profile in the middle of the page */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fade-in-move-up 1s forwards;
+    animation-delay: 0.5s;
+}
+
+.profile-wrapper .profile-pic {
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.profile-wrapper .profile-name {
+    text-align: center;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+#projects {
+    animation: fade-in 1s forwards;
+    animation-delay: 1.5s;
+}
+
 @media (max-width: 768px) {
 	h2 {
 		font-size: 28px;
