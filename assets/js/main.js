@@ -63,47 +63,114 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. GSAP Animations
-    gsap.registerPlugin(ScrollTrigger);
+    // 3. Text Scramble Effect
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '!<>-_\\/[]{}—=+*^?#________';
+            this.update = this.update.bind(this);
+        }
 
-    // Hero Text Reveal
-    const heroTl = gsap.timeline();
+        setText(newText) {
+            const oldText = this.el.innerText;
+            const length = Math.max(oldText.length, newText.length);
+            const promise = new Promise((resolve) => this.resolve = resolve);
+            this.queue = [];
+            for (let i = 0; i < length; i++) {
+                const from = oldText[i] || '';
+                const to = newText[i] || '';
+                const start = Math.floor(Math.random() * 40);
+                const end = start + Math.floor(Math.random() * 40);
+                this.queue.push({ from, to, start, end });
+            }
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+            return promise;
+        }
 
-    heroTl.from('.hero-title .line', {
-        y: 100,
-        opacity: 0,
-        duration: 1.5,
-        stagger: 0.2,
-        ease: 'power4.out',
-        delay: 0.5
-    })
-        .from('.hero-sub p', {
-            y: 20,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-        }, '-=1');
+        update() {
+            let output = '';
+            let complete = 0;
+            for (let i = 0, n = this.queue.length; i < n; i++) {
+                let { from, to, start, end, char } = this.queue[i];
+                if (this.frame >= end) {
+                    complete++;
+                    output += to;
+                } else if (this.frame >= start) {
+                    if (!char || Math.random() < 0.28) {
+                        char = this.randomChar();
+                        this.queue[i].char = char;
+                    }
+                    output += `<span class="dud">${char}</span>`;
+                } else {
+                    output += from;
+                }
+            }
+            this.el.innerHTML = output;
+            if (complete === this.queue.length) {
+                this.resolve();
+            } else {
+                this.frameRequest = requestAnimationFrame(this.update);
+                this.frame++;
+            }
+        }
 
-    // Project Image Reveal on Hover
+        randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+        }
+    }
+
+    // Apply Scramble to Hero Title
+    const phrases = ['DATA', 'SCIENCE'];
+    const el = document.querySelectorAll('.scramble-text');
+
+    el.forEach((element) => {
+        const fx = new TextScramble(element);
+        // Delay start slightly
+        setTimeout(() => {
+            fx.setText(element.innerText);
+        }, 500);
+    });
+
+
+    // 4. Fixed Project Preview Logic
     const projectItems = document.querySelectorAll('.project-item');
+    const previewWrapper = document.querySelector('.project-preview-wrapper');
+    const previewImage = document.querySelector('.project-preview');
 
     projectItems.forEach(item => {
-        const img = item.querySelector('.project-img-reveal');
+        item.addEventListener('mouseenter', () => {
+            const imageUrl = item.getAttribute('data-image');
+            previewImage.style.backgroundImage = `url(${imageUrl})`;
 
-        item.addEventListener('mousemove', (e) => {
-            const itemRect = item.getBoundingClientRect();
-            // Calculate position relative to the item
-            const x = e.clientX - itemRect.left;
-            const y = e.clientY - itemRect.top;
+            // Reveal wrapper
+            gsap.to(previewWrapper, {
+                opacity: 1,
+                duration: 0.3,
+                scale: 1,
+                ease: 'power2.out'
+            });
 
-            gsap.to(img, {
-                x: x,
-                y: y,
-                duration: 0.4,
+            // Slight zoom effect on image
+            gsap.fromTo(previewImage,
+                { scale: 1.1 },
+                { scale: 1, duration: 0.5, ease: 'power2.out' }
+            );
+        });
+
+        item.addEventListener('mouseleave', () => {
+            gsap.to(previewWrapper, {
+                opacity: 0,
+                duration: 0.3,
+                scale: 0.95,
                 ease: 'power2.out'
             });
         });
     });
+
+    // 5. GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
 
     // Footer Parallax/Reveal
     gsap.from('.footer-title', {
