@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < length; i++) {
                 const from = oldText[i] || '';
                 const to = newText[i] || '';
-                const start = Math.floor(Math.random() * 40);
-                const end = start + Math.floor(Math.random() * 40);
+                const start = Math.floor(Math.random() * 50);
+                const end = start + Math.floor(Math.random() * 50);
                 this.queue.push({ from, to, start, end });
             }
             cancelAnimationFrame(this.frameRequest);
@@ -134,7 +134,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 4. GSAP Animations
+    // 4. System Status HUD & Grid Interaction
+    const scrollVal = document.getElementById('scroll-val');
+    const mouseVal = document.getElementById('mouse-val');
+    const timeVal = document.getElementById('time-val');
+    const heroGrid = document.querySelector('.hero-bg-grid');
+
+    // Time Update
+    setInterval(() => {
+        const now = new Date();
+        timeVal.innerText = now.toISOString().split('T')[1].split('.')[0];
+    }, 1000);
+
+    // Mouse & Grid Update
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Update HUD
+        mouseVal.innerText = `[${x}, ${y}]`;
+
+        // Update Grid Mask (Spotlight Effect)
+        // We need to map screen coordinates to the grid's transformed space roughly
+        // For simplicity, we'll just move the center of the radial gradient
+        // Since the grid is transformed, we might need to adjust the Y slightly or just use percentage
+        const xPct = (x / window.innerWidth) * 100;
+        const yPct = (y / window.innerHeight) * 100;
+
+        const maskValue = `radial-gradient(circle at ${xPct}% ${yPct}%, black 0%, transparent 60%)`;
+        heroGrid.style.webkitMaskImage = maskValue;
+        heroGrid.style.maskImage = maskValue;
+    });
+
+    // Scroll Update
+    lenis.on('scroll', (e) => {
+        scrollVal.innerText = Math.floor(e.scroll).toString().padStart(4, '0');
+    });
+
+    // 5. GSAP Animations
     gsap.registerPlugin(ScrollTrigger);
 
     // Footer Parallax/Reveal
@@ -147,6 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         y: 100,
         opacity: 0
+    });
+
+    // Scramble Section Headers
+    const headers = document.querySelectorAll('h2');
+    headers.forEach(header => {
+        ScrollTrigger.create({
+            trigger: header,
+            start: 'top 80%',
+            onEnter: () => {
+                const scrambler = new TextScramble(header);
+                scrambler.setText(header.innerText);
+            }
+        });
     });
 
 });

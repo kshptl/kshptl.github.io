@@ -74,6 +74,45 @@ body {
     border-color: transparent;
 }
 
+/* System Status HUD */
+.system-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+}
+
+.status-item {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.status-label {
+    opacity: 0.5;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+.status-value {
+    color: #fff;
+    font-weight: 700;
+    min-width: 60px;
+}
+
 /* Typography */
 h1,
 h2,
@@ -235,32 +274,61 @@ a {
     font-weight: 800;
 }
 
+/* Hero Grid Effect */
+.hero-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image:
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+
+    /* Interactive Mask (Updated by JS) */
+    /* Interactive Mask (Updated by JS) */
+    /* Default to visible */
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px);
+    }
+
+    100% {
+        transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px);
+    }
+}
+
 /* Impact Grid */
 .impact-grid {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-top: none;
 }
 
 .impact-card {
     position: relative;
     width: 100%;
-    min-height: 250px;
-    /* Reduced height for cleaner list look */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    /* Only bottom border */
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    padding: 60px 0;
-    /* Vertical padding only */
+    min-height: 600px;
+    /* Tall vertical cards */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
     display: flex;
-    flex-direction: row;
-    /* Row layout */
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Content at bottom */
     align-items: flex-start;
-    justify-content: space-between;
     overflow: hidden;
-    transition: background-color 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 .impact-card:hover {
@@ -294,35 +362,32 @@ a {
     position: relative;
     z-index: 2;
     display: flex;
+    flex-direction: column;
+    /* Stack vertically */
     width: 100%;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 20px;
-    /* Horizontal padding */
+    padding: 0;
 }
 
 .card-title {
-    font-size: 3rem;
-    margin-bottom: 0;
-    width: 45%;
-    /* Title takes left side */
-    line-height: 1;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    width: 100%;
+    line-height: 1.1;
 }
 
 .card-info {
-    width: 50%;
-    /* Description takes right side */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .card-desc {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    max-width: 90%;
     margin-bottom: 30px;
     transition: color 0.3s ease;
+    max-width: 100%;
 }
 
 .impact-card:hover .card-desc {
@@ -332,11 +397,13 @@ a {
 .card-links {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column;
+    /* Stack links vertically */
+    gap: 10px;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
 }
 
 .impact-card:hover .card-links {
@@ -347,12 +414,15 @@ a {
 .card-links a {
     font-size: 0.9rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 8px 16px;
-    border-radius: 100px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    /* More digital/tech feel */
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     transition: background 0.3s ease, border-color 0.3s ease;
     color: #fff;
+    display: block;
+    text-align: center;
 }
 
 .card-links a:hover {
@@ -430,16 +500,23 @@ a {
         font-size: 15vw;
     }
 
+    .impact-grid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+    }
+
+    .impact-card {
+        min-height: 400px;
+        padding: 30px;
+    }
+
     .card-title {
         font-size: 2rem;
     }
 
-    .impact-card {
-        padding: 40px 20px;
-    }
-
     .card-links {
         opacity: 1;
+        /* Always show links on mobile */
         transform: translateY(0);
     }
 }

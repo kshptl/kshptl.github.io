@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -27,6 +27,22 @@
     <div class="noise-overlay"></div>
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
+
+    <!-- System Status HUD -->
+    <div class="system-status">
+        <div class="status-item">
+            <span class="status-label">SCROLL_Y</span>
+            <span class="status-value" id="scroll-val">0000</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">MOUSE_POS</span>
+            <span class="status-value" id="mouse-val">[0, 0]</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">TIME_UTC</span>
+            <span class="status-value" id="time-val">00:00:00</span>
+        </div>
+    </div>
 
     <!-- Fixed Project Preview -->
     <div class="project-preview-wrapper">
@@ -45,6 +61,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
+            <div class="hero-bg-grid"></div>
             <div class="container">
                 <div class="hero-text-wrapper">
                     <h1 class="hero-title">
@@ -81,7 +98,7 @@
                     <!-- Impact Card 1: Healthcare -->
                     <div class="impact-card">
                         <div class="card-bg"
-                            style="background-image: url('https://images.unsplash.com/photo-1579165466741-7f35a4755657?q=80&w=2000&auto=format&fit=crop');">
+                            style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop');">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">Advancing Healthcare</h3>
