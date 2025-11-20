@@ -134,42 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 4. Fixed Project Preview Logic
-    const projectItems = document.querySelectorAll('.project-item');
-    const previewWrapper = document.querySelector('.project-preview-wrapper');
-    const previewImage = document.querySelector('.project-preview');
-
-    projectItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            const imageUrl = item.getAttribute('data-image');
-            previewImage.style.backgroundImage = `url(${imageUrl})`;
-
-            // Reveal wrapper
-            gsap.to(previewWrapper, {
-                opacity: 1,
-                duration: 0.3,
-                scale: 1,
-                ease: 'power2.out'
-            });
-
-            // Slight zoom effect on image
-            gsap.fromTo(previewImage,
-                { scale: 1.1 },
-                { scale: 1, duration: 0.5, ease: 'power2.out' }
-            );
-        });
-
-        item.addEventListener('mouseleave', () => {
-            gsap.to(previewWrapper, {
-                opacity: 0,
-                duration: 0.3,
-                scale: 0.95,
-                ease: 'power2.out'
-            });
-        });
-    });
-
-    // 5. GSAP Animations
+    // 4. GSAP Animations
     gsap.registerPlugin(ScrollTrigger);
 
     // Footer Parallax/Reveal
