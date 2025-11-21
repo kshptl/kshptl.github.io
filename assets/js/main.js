@@ -1,202 +1,41 @@
-document.addEventListener('DOMContentLoaded', () => {
+console.log('Minimalist Portfolio Loaded');
 
-    // 1. Initialize Lenis (Smooth Scrolling)
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-    });
+const roles = [
+    "Data Scientist",
+    "Data Engineer",
+    "Data Storyteller"
+];
 
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+const el = document.getElementById('typewriter');
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typeSpeed = 100;
+
+function type() {
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+        el.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+    } else {
+        el.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
     }
 
-    requestAnimationFrame(raf);
-
-    // 2. Custom Cursor Logic
-    const cursor = document.querySelector('.cursor');
-    const cursorFollower = document.querySelector('.cursor-follower');
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // Immediate update for the small dot
-        gsap.to(cursor, {
-            x: mouseX,
-            y: mouseY,
-            duration: 0
-        });
-    });
-
-    // Smooth follower update
-    gsap.ticker.add(() => {
-        const dt = 1.0 - Math.pow(1.0 - 0.15, gsap.ticker.deltaRatio());
-        cursorX += (mouseX - cursorX) * dt;
-        cursorY += (mouseY - cursorY) * dt;
-
-        gsap.set(cursorFollower, {
-            x: cursorX,
-            y: cursorY
-        });
-    });
-
-    // Hover effects for cursor
-    const links = document.querySelectorAll('a, button, .project-item');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursorFollower.classList.add('active');
-        });
-        link.addEventListener('mouseleave', () => {
-            cursorFollower.classList.remove('active');
-        });
-    });
-
-    // 3. Text Scramble Effect
-    class TextScramble {
-        constructor(el) {
-            this.el = el;
-            this.chars = '!<>-_\\/[]{}—=+*^?#________';
-            this.update = this.update.bind(this);
-        }
-
-        setText(newText) {
-            const oldText = this.el.innerText;
-            const length = Math.max(oldText.length, newText.length);
-            const promise = new Promise((resolve) => this.resolve = resolve);
-            this.queue = [];
-            for (let i = 0; i < length; i++) {
-                const from = oldText[i] || '';
-                const to = newText[i] || '';
-                const start = Math.floor(Math.random() * 50);
-                const end = start + Math.floor(Math.random() * 50);
-                this.queue.push({ from, to, start, end });
-            }
-            cancelAnimationFrame(this.frameRequest);
-            this.frame = 0;
-            this.update();
-            return promise;
-        }
-
-        update() {
-            let output = '';
-            let complete = 0;
-            for (let i = 0, n = this.queue.length; i < n; i++) {
-                let { from, to, start, end, char } = this.queue[i];
-                if (this.frame >= end) {
-                    complete++;
-                    output += to;
-                } else if (this.frame >= start) {
-                    if (!char || Math.random() < 0.28) {
-                        char = this.randomChar();
-                        this.queue[i].char = char;
-                    }
-                    output += `<span class="dud">${char}</span>`;
-                } else {
-                    output += from;
-                }
-            }
-            this.el.innerHTML = output;
-            if (complete === this.queue.length) {
-                this.resolve();
-            } else {
-                this.frameRequest = requestAnimationFrame(this.update);
-                this.frame++;
-            }
-        }
-
-        randomChar() {
-            return this.chars[Math.floor(Math.random() * this.chars.length)];
-        }
+    if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 500; // Pause before typing next
     }
 
-    // Apply Scramble to Hero Title
-    const phrases = ['DATA', 'SCIENCE'];
-    const el = document.querySelectorAll('.scramble-text');
+    setTimeout(type, typeSpeed);
+}
 
-    el.forEach((element) => {
-        const fx = new TextScramble(element);
-        // Delay start slightly
-        setTimeout(() => {
-            fx.setText(element.innerText);
-        }, 500);
-    });
-
-
-    // 4. System Status HUD & Grid Interaction
-    const scrollVal = document.getElementById('scroll-val');
-    const mouseVal = document.getElementById('mouse-val');
-    const timeVal = document.getElementById('time-val');
-    const heroGrid = document.querySelector('.hero-bg-grid');
-
-    // Time Update
-    setInterval(() => {
-        const now = new Date();
-        timeVal.innerText = now.toISOString().split('T')[1].split('.')[0];
-    }, 1000);
-
-    // Mouse & Grid Update
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-
-        // Update HUD
-        mouseVal.innerText = `[${x}, ${y}]`;
-
-        // Update Grid Mask (Spotlight Effect)
-        // We need to map screen coordinates to the grid's transformed space roughly
-        // For simplicity, we'll just move the center of the radial gradient
-        // Since the grid is transformed, we might need to adjust the Y slightly or just use percentage
-        const xPct = (x / window.innerWidth) * 100;
-        const yPct = (y / window.innerHeight) * 100;
-
-        const maskValue = `radial-gradient(circle at ${xPct}% ${yPct}%, black 0%, transparent 60%)`;
-        heroGrid.style.webkitMaskImage = maskValue;
-        heroGrid.style.maskImage = maskValue;
-    });
-
-    // Scroll Update
-    lenis.on('scroll', (e) => {
-        scrollVal.innerText = Math.floor(e.scroll).toString().padStart(4, '0');
-    });
-
-    // 5. GSAP Animations
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Footer Parallax/Reveal
-    gsap.from('.footer-title', {
-        scrollTrigger: {
-            trigger: '.footer',
-            start: 'top 80%',
-            end: 'bottom bottom',
-            scrub: 1
-        },
-        y: 100,
-        opacity: 0
-    });
-
-    // Scramble Section Headers
-    const headers = document.querySelectorAll('h2');
-    headers.forEach(header => {
-        ScrollTrigger.create({
-            trigger: header,
-            start: 'top 80%',
-            onEnter: () => {
-                const scrambler = new TextScramble(header);
-                scrambler.setText(header.innerText);
-            }
-        });
-    });
-
-});
+// Start typing
+document.addEventListener('DOMContentLoaded', type);

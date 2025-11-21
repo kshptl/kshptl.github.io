@@ -23,161 +23,73 @@
 </head>
 
 <body>
+    <main class="split-layout">
+        <!-- Left Column: Info -->
+        <section class="info-col">
+            <header>
+                <h1 class="name">Kush Patel</h1>
+                <p class="role"><span id="typewriter"></span><span class="cursor-blink">|</span></p>
+            </header>
 
-    <div class="noise-overlay"></div>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- System Status HUD -->
-    <div class="system-status">
-        <div class="status-item">
-            <span class="status-label">SCROLL_Y</span>
-            <span class="status-value" id="scroll-val">0000</span>
-        </div>
-        <div class="status-item">
-            <span class="status-label">MOUSE_POS</span>
-            <span class="status-value" id="mouse-val">[0, 0]</span>
-        </div>
-        <div class="status-item">
-            <span class="status-label">TIME_UTC</span>
-            <span class="status-value" id="time-val">00:00:00</span>
-        </div>
-    </div>
-
-    <!-- Fixed Project Preview -->
-    <div class="project-preview-wrapper">
-        <div class="project-preview"></div>
-    </div>
-
-    <nav class="nav">
-        <div class="logo">Kush Patel</div>
-        <div class="nav-links">
-            <a href="#projects" class="nav-link">Work</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="mailto:hello@kushpatel.com" class="nav-link">Contact</a>
-        </div>
-    </nav>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg-grid"></div>
-            <div class="container">
-                <div class="hero-text-wrapper">
-                    <h1 class="hero-title">
-                        <span class="line scramble-text">DATA</span>
-                        <span class="line right scramble-text">SCIENCE</span>
-                    </h1>
-                    <div class="hero-sub">
-                        <p>Creative Developer & <br> Machine Learning Engineer</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <p class="about-text">
-                    I bridge the gap between <span class="highlight">complex data</span> and <span
-                        class="highlight">intuitive experiences</span>.
-                    Specializing in machine learning algorithms and crafting premium digital interfaces.
+            <div class="bio">
+                <p>Data is the pulse of reality.</p>
+                <p>I build intelligent systems that help us understand ourselves, heal our bodies, and protect our home.
                 </p>
             </div>
+
+            <nav class="contact-nav">
+                <a href="mailto:hello@kushpatel.com">Email</a>
+                <a href="https://github.com/kshptl" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/kushpatel44" target="_blank">LinkedIn</a>
+            </nav>
+
+            <footer class="minimal-footer">
+                <p>&copy; 2025</p>
+            </footer>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Impact Areas</h2>
-                </div>
-
-                <div class="impact-grid">
-
-                    <!-- Impact Card 1: Healthcare -->
-                    <div class="impact-card">
-                        <div class="card-bg"
-                            style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop');">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Advancing Healthcare</h3>
-                            <div class="card-info">
-                                <p class="card-desc">Leveraging ML to optimize drug testing and improve diagnostic
-                                    accuracy.</p>
-                                <ul class="card-links">
-                                    <li><a href="https://github.com/kshptl/Patient-Selection-for-Diabetes-Drug-Testing-using-EHR-Data"
-                                            target="_blank">Patient Selection &rarr;</a></li>
-                                    <li><a href="https://github.com/kshptl/Pneumonia-Detection"
-                                            target="_blank">Pneumonia
-                                            Detection &rarr;</a></li>
-                                </ul>
-                            </div>
-                        </div>
+        <!-- Right Column: Work -->
+        <section class="work-col">
+            <div class="project-list">
+                <a href="https://github.com/kshptl/Patient-Selection-for-Diabetes-Drug-Testing-using-EHR-Data"
+                    target="_blank" class="project-item">
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline>
+                            <source src="https://assets.mixkit.co/videos/46748/46748-720.mp4" type="video/mp4">
+                        </video>
                     </div>
-
-                    <!-- Impact Card 2: Intelligence -->
-                    <div class="impact-card">
-                        <div class="card-bg"
-                            style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop');">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Deciphering Intelligence</h3>
-                            <div class="card-info">
-                                <p class="card-desc">Unlocking insights from text and patterns using NLP and advanced
-                                    algorithms.</p>
-                                <ul class="card-links">
-                                    <li><a href="https://github.com/kshptl/Drug-Review-Sentiment-Analysis"
-                                            target="_blank">Sentiment Analysis &rarr;</a></li>
-                                    <li><a href="https://github.com/kshptl/Topic-Modeling" target="_blank">Topic
-                                            Modeling
-                                            &rarr;</a></li>
-                                    <li><a href="https://github.com/kshptl/Plagarism-Checker-Algorithm"
-                                            target="_blank">Plagiarism Checker &rarr;</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <span class="project-year">2025</span>
+                    <div class="project-details">
+                        <h2 class="project-title">Preserving Life</h2>
+                        <p class="project-desc">Patient Selection for Diabetes Drug Testing using EHR Data.</p>
                     </div>
-
-                    <!-- Impact Card 3: Global Systems -->
-                    <div class="impact-card">
-                        <div class="card-bg"
-                            style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop');">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Modeling Global Systems</h3>
-                            <div class="card-info">
-                                <p class="card-desc">Visualizing and analyzing complex network dynamics and
-                                    environmental
-                                    impact.</p>
-                                <ul class="card-links">
-                                    <li><a href="https://github.com/kshptl/covid-19-emissions" target="_blank">Covid-19
-                                            Emissions &rarr;</a></li>
-                                    <li><a href="https://github.com/kshptl/Network-Communities-and-Clustering"
-                                            target="_blank">Network Clustering &rarr;</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                </a>
+                <a href="https://github.com/kshptl/Drug-Review-Sentiment-Analysis" target="_blank" class="project-item">
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline>
+                            <source src="https://assets.mixkit.co/videos/26770/26770-720.mp4" type="video/mp4">
+                        </video>
                     </div>
-
-                </div>
+                    <span class="project-year">2024</span>
+                    <div class="project-details">
+                        <h2 class="project-title">Augmenting the Mind</h2>
+                        <p class="project-desc">Sentiment Analysis & Topic Modeling for Drug Reviews.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/kshptl/covid-19-emissions" target="_blank" class="project-item">
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline>
+                            <source src="https://assets.mixkit.co/videos/31497/31497-720.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <span class="project-year">2024</span>
+                    <div class="project-details">
+                        <h2 class="project-title">Healing Our World</h2>
+                        <p class="project-desc">Visualizing Covid-19 Emissions & Network Clustering.</p>
+                    </div>
+                </a>
             </div>
         </section>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <h2 class="footer-title">Let's work together</h2>
-                    <div class="footer-links">
-                        <a href="mailto:hello@kushpatel.com">Email</a>
-                        <a href="https://github.com/kshptl">GitHub</a>
-                        <a href="https://linkedin.com/in/kushpatel44">LinkedIn</a>
-                    </div>
-                    <p class="copyright">&copy; 2025 Kush Patel</p>
-                </div>
-            </div>
-        </footer>
-
     </main>
 
     <script src="assets/js/main.js"></script>
